@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ploverlay</title>
+    <script>
+      (() => {
+        function handleSuccess(position) {
+          const { coords } = position;
+          document.getElementById('container').innerText = 
+            `lat: ${coords.latitude} / long: ${coords.longitude} / accuracy: ${coords.accuracy}m`;
+        }
+        function handleFailure(position) {
+          document.getElementById('container').innerText = 'failure! :(';
+        }
+        function onLoad() {
+          document.getElementById('container').innerText = 'loaded';
+          navigator.geolocation.getCurrentPosition(handleSuccess, handleFailure);
+        }
+        window.onload = onLoad;
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="container">Please wait...</div>
+  </body>
+</html>
