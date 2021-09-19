@@ -1,34 +1,34 @@
 function handleSuccess(position) {
   const { coords } = position;
   const { latitude, longitude, accuracy } = coords;
+  console.log(`lat: ${latitude} / long: ${longitude} / accuracy: ${accuracy}m`);
+  document.getElementById('message').innerText = '';
 
   var geoCoords = [
-    158, 64,
-    494, 69,
-    495, 404,
-    158, 404];
+    // lat, long
+    42.433977, -71.080992,
+    42.433977, -71.057395,
+    42.418675, -71.080992,
+    42.418675, -71.057395];
   var imgCoords = [
-    100, 500,
-    152, 564,
-    148, 604,
-    100, 560];
+    // x, y; top left is (0, 0)
+    0, 0,
+    1242, 0,
+    0, 1052,
+    1242, 1052];
   var perspT = PerspT(geoCoords, imgCoords);
-  var geoPoint = [250, 120];
+  var geoPoint = [latitude, longitude];
   var imgPoint = perspT.transform(geoPoint[0], geoPoint[1]);
-  console.log(imgPoint);
 
-  document.getElementById('container').innerText = 
-    `lat: ${latitude} / long: ${longitude} / accuracy: ${accuracy}m`;
   const pin = document.getElementById('pin');
-  pin.setAttribute('cx', 500);
-  pin.setAttribute('cy', 500);
+  pin.setAttribute('cx', imgPoint[0]);
+  pin.setAttribute('cy', imgPoint[1]);
 }
 
 function handleFailure(position) {
-  document.getElementById('container').innerText = 'failure! :(';
+  document.getElementById('message').innerText = 'Geolocation API failed.';
 }
 
 export default function main() {
-  document.getElementById('container').innerText = 'loaded';
   navigator.geolocation.getCurrentPosition(handleSuccess, handleFailure);
 }
