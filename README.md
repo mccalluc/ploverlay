@@ -1,5 +1,5 @@
 # ploverlay
-Experiment with geolocation APIs and PDF rendering
+Show your current location on any map.
 
 ## Development
 Because this uses ES modules, you'll need to run server locally, instead of just using `file:///`.
