@@ -17,7 +17,7 @@ function handleFailure(position) {
   document.getElementById('message').innerText = 'Geolocation API failed.';
 }
 
-export function mapGeoToImg(latitude, longitude) {
+function mapGeoToImg(latitude, longitude) {
   const mapData = document.getElementById('map').dataset;
 
   const geoCoords = [
