@@ -8,7 +8,7 @@ function handleFailure(position) {
   document.getElementById('container').innerText = 'failure! :(';
 }
 
-export function main() {
+export default function main() {
   document.getElementById('container').innerText = 'loaded';
   navigator.geolocation.getCurrentPosition(handleSuccess, handleFailure);
 }
