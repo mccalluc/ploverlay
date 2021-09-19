@@ -1,24 +1,12 @@
 function handleSuccess(position) {
-  const { coords } = position;
-  const { latitude, longitude, accuracy } = coords;
-  console.log(`lat: ${latitude} / long: ${longitude} / accuracy: ${accuracy}m`);
   document.getElementById('message').innerText = '';
 
-  var geoCoords = [
-    // lat, long
-    42.433977, -71.080992,
-    42.433977, -71.057395,
-    42.418675, -71.080992,
-    42.418675, -71.057395];
-  var imgCoords = [
-    // x, y; top left is (0, 0)
-    0, 0,
-    1242, 0,
-    0, 1052,
-    1242, 1052];
-  var perspT = PerspT(geoCoords, imgCoords);
+  const { coords } = position;
+  const { latitude, longitude } = coords;
+
   var geoPoint = [latitude, longitude];
-  var imgPoint = perspT.transform(geoPoint[0], geoPoint[1]);
+  var imgPoint = mapGeoToImg(...geoPoint);
+  console.log(`${geoPoint} -> ${imgPoint}`)
 
   const pin = document.getElementById('pin');
   pin.setAttribute('cx', imgPoint[0]);
@@ -29,6 +17,25 @@ function handleFailure(position) {
   document.getElementById('message').innerText = 'Geolocation API failed.';
 }
 
+export function mapGeoToImg(latitude, longitude) {
+  const mapData = document.getElementById('map').dataset;
+
+  var geoCoords = [
+    ...mapData.geo0.split(' '),
+    ...mapData.geo1.split(' '),
+    ...mapData.geo2.split(' '),
+    ...mapData.geo3.split(' ')];
+  var imgCoords = [
+    ...mapData.img0.split(' '),
+    ...mapData.img1.split(' '),
+    ...mapData.img2.split(' '),
+    ...mapData.img3.split(' ')];
+  var perspT = PerspT(geoCoords, imgCoords);
+  var geoPoint = [latitude, longitude];
+  var imgPoint = perspT.transform(geoPoint[0], geoPoint[1]);
+  return imgPoint;
+}
+
 export default function main() {
-  navigator.geolocation.getCurrentPosition(handleSuccess, handleFailure);
+  navigator.geolocation.watchPosition(handleSuccess, handleFailure, { enableHighAccuracy: true });
 }
