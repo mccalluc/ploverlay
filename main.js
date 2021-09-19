@@ -19,6 +19,9 @@ function handleSuccess(position) {
 
   document.getElementById('container').innerText = 
     `lat: ${latitude} / long: ${longitude} / accuracy: ${accuracy}m`;
+  const pin = document.getElementById('pin');
+  pin.setAttribute('cx', 500);
+  pin.setAttribute('cy', 500);
 }
 
 function handleFailure(position) {
