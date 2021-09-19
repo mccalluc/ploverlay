@@ -2,6 +2,14 @@
 <html>
   <head>
     <title>ploverlay</title>
+    <style>
+      html, body, svg {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/perspective-transform@1.1.3/dist/perspective-transform.min.js"></script>
     <script type="module" src="main.js"></script>
     <script type="module">
       import main from './main.js';
@@ -10,5 +18,10 @@
   </head>
   <body>
     <div id="container">Please wait...</div>
+    <svg height="100%" width="100%">
+      <image
+        href="https://lh3.googleusercontent.com/30WbZQYx8gEF9Vm_MFHhBGGlj9Arkf8boznnW2u4lz3xCp5BWLwOkNY2Jl3QI8YcZJqwhb86baBFFeBwUYSXLJVxerRDSRdsUg-j53yDuNQ24xeCvVHkYVqPtMBbGR5KvsjS0P8lWw=w2400"
+        height="100%" width="100%" />
+    </svg>
   </body>
 </html>
