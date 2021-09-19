@@ -17,7 +17,7 @@ function handleFailure(position) {
   document.getElementById('message').innerText = 'Geolocation API failed.';
 }
 
-export function mapGeoToImg(latitude, longitude) {
+function mapGeoToImg(latitude, longitude) {
   const mapData = document.getElementById('map').dataset;
 
   const geoCoords = [
@@ -31,7 +31,7 @@ export function mapGeoToImg(latitude, longitude) {
     ...mapData.img2.split(' '),
     ...mapData.img3.split(' ')];
 
-  // The differences between the geographic coordinates are very small when compared with their magnitudes.
+  // The differences between the geographic coordinates are very small compared to their magnitudes.
   // Translate the latitude and longitude to the origin before the projective transform.
   const offset = geoCoords.slice(0, 2)
   const offsetCoords = geoCoords.map((v, i) => v - offset[i % 2])
@@ -42,6 +42,14 @@ export function mapGeoToImg(latitude, longitude) {
   return imgPoint;
 }
 
+function setPin() {
+  navigator.geolocation.getCurrentPosition(handleSuccess, handleFailure, { enableHighAccuracy: true });
+}
+
 export default function main() {
-  navigator.geolocation.watchPosition(handleSuccess, handleFailure, { enableHighAccuracy: true });
+  setPin();
+
+  const query = new URLSearchParams(window.location.search.slice(1));
+  const refreshInterval = query.get('refresh') || 60;
+  setInterval(setPin, refreshInterval * 1000)
 }
