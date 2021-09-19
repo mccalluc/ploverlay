@@ -20,19 +20,25 @@ function handleFailure(position) {
 export function mapGeoToImg(latitude, longitude) {
   const mapData = document.getElementById('map').dataset;
 
-  var geoCoords = [
+  const geoCoords = [
     ...mapData.geo0.split(' '),
     ...mapData.geo1.split(' '),
     ...mapData.geo2.split(' '),
     ...mapData.geo3.split(' ')];
-  var imgCoords = [
+  const imgCoords = [
     ...mapData.img0.split(' '),
     ...mapData.img1.split(' '),
     ...mapData.img2.split(' '),
     ...mapData.img3.split(' ')];
-  var perspT = PerspT(geoCoords, imgCoords);
-  var geoPoint = [latitude, longitude];
-  var imgPoint = perspT.transform(geoPoint[0], geoPoint[1]);
+
+  // The differences between the geographic coordinates are very small when compared with their magnitudes.
+  // Translate the latitude and longitude to the origin before the projective transform.
+  const offset = geoCoords.slice(0, 2)
+  const offsetCoords = geoCoords.map((v, i) => v - offset[i % 2])
+
+  const perspT = PerspT(offsetCoords, imgCoords);
+  const geoPoint = [latitude - offset[0], longitude - offset[1]];
+  const imgPoint = perspT.transform(...geoPoint);
   return imgPoint;
 }
 
