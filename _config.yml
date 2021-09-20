@@ -9,6 +9,7 @@ plugins: []
 collections:
   maps:
     output: True
+    permalink: /:collection/:name  # Default includes ".html" extension in url.
 defaults:
   - scope:
       path: ''
