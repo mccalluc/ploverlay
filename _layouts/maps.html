@@ -1,8 +1,10 @@
+---
+---
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>ploverlay</title>
+    <title>ploverlay | {{ page.title }}</title>
     <style>
       html, body, svg {
         width: 100%;
@@ -11,26 +13,25 @@
       }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/perspective-transform@1.1.3/dist/perspective-transform.min.js"></script>
-    <script type="module" src="main.js"></script>
     <script type="module">
-      import main from './main.js';
+      import main from '{{ site.baseurl }}/assets/js/main.js';
       window.onload = main;
     </script>
   </head>
   <body>
     <div id="message">Please wait...</div>
-    <svg id="map" height="100%" width="100%" viewBox="0 0 1242 1052"
-      data-geo0="42.4339893 -71.0809773"
-      data-geo1="42.4339893 -71.0568420"
-      data-geo2="42.4186740 -71.0809773"
-      data-geo3="42.4186740 -71.0568420"
-      data-img0="0 0"
-      data-img1="1242 0"
-      data-img2="0 1052"
-      data-img3="1242 1052"
+    <svg id="map" height="100%" width="100%" viewBox="{{ page.view_box }}"
+      data-geo0="{{ page.geo_coords[0] }}"
+      data-geo1="{{ page.geo_coords[1] }}"
+      data-geo2="{{ page.geo_coords[2] }}"
+      data-geo3="{{ page.geo_coords[3] }}"
+      data-img0="{{ page.img_coords[0] }}"
+      data-img1="{{ page.img_coords[1] }}"
+      data-img2="{{ page.img_coords[2] }}"
+      data-img3="{{ page.img_coords[3] }}"
     >
       <image
-        href="https://user-images.githubusercontent.com/730388/133940782-677443ba-46a3-471c-8a91-80674794628e.png"
+        href="{{ page.img_src }}"
         height="100%" width="100%" />
       <circle id="pin" cx="0" cy="0" r="1em" fill="#fff" stroke="#000" stroke-width="0.4em" />
     </svg>

@@ -1,0 +1,22 @@
+title: ploverlay
+description: See your current location on any map
+baseurl: "/ploverlay"
+url: "https://mccalluc.github.io"
+
+# Build settings
+theme: minima
+plugins: []
+collections:
+  maps:
+    output: True
+    permalink: /:collection/:name  # Default includes ".html" extension in url.
+defaults:
+  - scope:
+      path: ''
+      type: maps
+    values:
+      layout: maps
+
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+exclude: []
