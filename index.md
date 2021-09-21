@@ -17,7 +17,8 @@ Current maps:
 
 {% for map in site.maps %}
 {% capture url %}{{ site.baseurl }}{{ map.url }}{% endcapture %}
-- [{{ map.title }}]({{ url }}) ([faster]({{url}}?refresh=10)/[cheaper]({{url}}?refresh=600)) (from [{{ map.source.text }}]({{ map.source.href }}))
+- [{{ map.title }}]({{ url }}) ([faster]({{url}}?refresh=10)/[cheaper]({{url}}?refresh=600))
+  (from [{{ map.source.text }}]({{ map.source.href }}))
 {% endfor %}
 
 The GPS on mobile devices uses a lot of battery. The "faster" and "cheaper" links set the refresh interval shorter or longer than the 1-minute default.
