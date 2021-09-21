@@ -4,8 +4,8 @@ function handleSuccess(position) {
   const { coords } = position;
   const { latitude, longitude } = coords;
 
-  var geoPoint = [latitude, longitude];
-  var imgPoint = mapGeoToImg(...geoPoint);
+  const geoPoint = [latitude, longitude];
+  const imgPoint = mapGeoToImg(...geoPoint);
   console.log(`${geoPoint} -> ${imgPoint}`)
 
   const pin = document.getElementById('pin');
@@ -13,7 +13,7 @@ function handleSuccess(position) {
   pin.setAttribute('cy', imgPoint[1]);
 }
 
-function handleFailure(position) {
+function handleFailure() {
   document.getElementById('message').innerText = 'Geolocation API failed.';
 }
 
