@@ -1,5 +1,5 @@
 ---
-title: Malden, Massachusetts
+title: Malden, Massachusetts (Zoning)
 geo_coords:
   - 42.4339893 -71.0809773
   - 42.4339893 -71.0568420
