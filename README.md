@@ -7,6 +7,10 @@ but the local maps can’t show your current location.
 Given the URL of a map, and the latitude and longitude of four control points,
 [ploverlay will show you where you are on the map](https://mccalluc.github.io/ploverlay/).
 
+([Plovers](https://www.allaboutbirds.org/guide/browse/taxonomy/Charadriidae)
+are (cute!) shore birds that can return to the same nesting location year after year.
+Hopefully, good map tools can help people find their way in the outdoors, too.)
+
 ## Development
 
 After you clone the repo and cd into it, you'll need to start Jekyll:
@@ -25,3 +29,4 @@ and you will use the full height and width of the image, but that is not a requi
 Note that because we use four control points, a projective transformation is possible:
 This means that you could use an oblique aerial photograph, as long as the landscape below is relatively flat,
 and four control points can be precisely located in the image.
+
