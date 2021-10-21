@@ -22,3 +22,7 @@ Current maps:
 {% endfor %}
 
 The GPS on mobile devices uses a lot of battery. The "faster" and "cheaper" links set the refresh interval shorter or longer than the 1-minute default.
+
+([Plovers](https://www.allaboutbirds.org/guide/browse/taxonomy/Charadriidae)
+are (cute!) shore birds that can return to the same nesting location year after year.
+Hopefully, good map tools can help people find their way in the outdoors, too.)
